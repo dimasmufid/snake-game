@@ -1,18 +1,5 @@
-/*
-1. Score value
-- let score = 0
-- if snake touch point, score++
-*/
-
 // SCORE VALUE
 let score = parseInt(document.getElementById("score").textContent);
-
-/*
-2. High score value
-- let score = [0]
-- every game over, store the score value into high score array
-- high score = max of those array
-*/
 
 // HIGH SCORE VALUE
 function updateHighScore(newScore, highScore){
@@ -22,17 +9,8 @@ function updateHighScore(newScore, highScore){
 }
 
 let highScore = [];
-let newScore = 0; // Change into the last value before game over
+let newScore = 0; 
 updateHighScore(newScore, highScore);
-
-/*
-3. Randomize point inside game canvas, except on snake body
-- Get the div html
-- Divide thos div into 2 dimension array of pixel (?)
-- Set empty array of snake body
-- While x and y is in snake body array: set random number for the x and y
-- Make square with those x and y position
-*/
 
 // RANDOMIZE POINT
 const gameCanvas = document.getElementById("game-canvas");
@@ -73,16 +51,6 @@ do {
     pointColor.style.backgroundColor = "red";
 } while (snakeBody.includes(point));    
 
-
-/*
-4. Building growing snake and the point
-4a. Initialize random point with size 1
-- While x and y === initialized point: set random number for the x and y
-- Make point with those x and y position
-- append to snake body array
-- snake body array pixel = white color
-*/
-
 let initSnake = []
 do {
     initSnake = randomPoint();
@@ -112,24 +80,6 @@ function coloring_snake(bodyColor, headColor) {
   }
 
 coloring_snake("white", "blue");
-
-/*
-4b. Go ahead every 0.5 second, with his body following the track of the head
-- initial position, as stop
-- do this every 0.5 second
-.if there is keyboard input, change the position
-- get keyboard input: each arrow = up, down, right, left
-- get 0.5 second, increment every it occur :
-- state 1, state 2, state 3, state 4 = up, down, right, left
-.state 1 = add member (x, y+1) & pop first array member
-.state 2 = add member (x, y-1) & pop first array member
-.state 3 = add member (x+1, y) & pop first array member
-.state 4 = add member (x-1, y) & pop first array member
-
-4c. Everytime touch point, growing the snake by one
-- if added member === point, cancel pop the first array member
-
-*/
 
 let lastKeyPressed = null;
 let newBody = null;
